@@ -1,5 +1,9 @@
 /*Style 1*/
 body {
   background-image: url("../images/shark_withs_shoes.png");
+  font-weight: bold;
+  font-size: 28px;
+  color: rgb(243, 34, 208);
+  -webkit-text-stroke: 1px green; 
 }
 
