@@ -1,9 +1,56 @@
 /*Style 1*/
 body {
-  background-image: url("../images/shark_withs_shoes.png");
+  background-image: url("../images/sponchbob.png");
+  font-family: Arial;
   font-weight: bold;
-  font-size: 28px;
-  color: rgb(243, 34, 208);
-  -webkit-text-stroke: 1px green; 
+  font-size: 35px;
+  color: rgb(139, 248, 5);
+  -webkit-text-stroke: 2px rgb(214, 17, 228); 
 }
 
+/*Style 2*/
+nav {
+  background-color: rgb(74, 235, 171);
+  border: 20px solid rgb(215, 12, 219);
+}
+
+/*Style 3*/
+img {
+  width: 150;
+  height: 150;
+  border: 10px solid black;
+}
+
+/*Style 4*/
+ul {
+  display: flex;
+  list-style-type: none; 
+  gap: 250px;
+}
+
+/*Style 5*/
+a {
+  color: blueviolet;
+  -webkit-text-stroke: 0px; 
+}
+
+/*Style 6*/
+h2 {
+  text-align: center;
+  border: 3px solid #0066ff;
+  background-color: #00ff22;
+  padding: 15px;
+}
+
+/*Style 7*/
+h1 {
+  text-align: center;
+  border: 3px solid #eeb414;
+  background-color: #8558ed;
+  padding: 15px;
+}
+
+p {
+  font-size: 2rem;
+  padding: 1em
+}
