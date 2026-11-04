@@ -1,14 +1,14 @@
 /*Style 1*/
 body {
+  width: 100%;
+  height: 100%;
+  margin: auto;
   background-image: url("../images/sponchbob.png");
   font-family: Arial;
   font-weight: bold;
   font-size: 35px;
   color: rgb(139, 248, 5);
   -webkit-text-stroke: 2px rgb(214, 17, 228); 
-  width: 100%;
-  height: 100%;
-  margin: auto;
 }
 
 /*Style 2*/
@@ -45,6 +45,7 @@ h1 {
   padding: 15px;
 }
 
+/*Style 7*/
 p {
   font-size: 2rem;
   padding: 1em
