@@ -17,27 +17,21 @@ nav {
   border: 20px solid rgb(215, 12, 219);
 }
 
-/*Style 3*/
-img {
-  width: 150;
-  height: 150;
-  border: 10px solid black;
-}
 
-/*Style 4*/
+/*Style 3*/
 #links {
   display: flex;
   list-style-type: none; 
   gap: 250px;
 }
 
-/*Style 5*/
+/*Style 4*/
 a {
   color: blueviolet;
   -webkit-text-stroke: 0px; 
 }
 
-/*Style 6*/
+/*Style 5*/
 h1 {
   text-align: center;
   border: 3px solid #eeb414;
