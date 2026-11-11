@@ -6,9 +6,9 @@ function init(){
 
  entryButton.addEventListener('click', function() {
     var text = entryInput.value;
-    alert('aaaaa: ' + text);
+    alert('John Kruder: ' + text);
     text.textOutput.textContent = text;
-    
+
  });
 }
 
