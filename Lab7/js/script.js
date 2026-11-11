@@ -7,7 +7,7 @@ function init(){
  entryButton.addEventListener('click', function() {
     var text = entryInput.value;
     alert('John Kruder: ' + text);
-    text.textOutput.textContent = text;
+    textOutput.textContent = text;
 
  });
 }
