@@ -1,41 +1,26 @@
-"use strict";
-
-const markers = [];
-
 function initMap() {
   const mapDiv = document.getElementById("map");
   if (!mapDiv) { return; }
 
-  const iit = { lat: 41.8348, lng: -87.6270 };
-  const map = new google.maps.Map(mapDiv, { center: iit, zoom: 15 });
+  const schools = [
+    { name: "Illinois Institute of Technology", lat: 41.8348, lng: -87.6270 },
+    { name: "Brother Rice High School", lat: 41.7115, lng: -87.7186 },
+    { name: "Mt. Greenwood Elementary", lat: 41.6961, lng: -87.7053 }
+  ];
 
-  // Feature 1: marker with an info window
-  const marker = new google.maps.Marker({ position: iit, map: map, title: "Illinois Tech" });
-  const info = new google.maps.InfoWindow({ content: "<strong>Illinois Institute of Technology</strong>" });
-  marker.addListener("click", function () { info.open(map, marker); });
-
-  // Feature 2: click the map to drop new markers
-  map.addListener("click", function (event) {
-    const m = new google.maps.Marker({ position: event.latLng, map: map });
-    markers.push(m);
+  const map = new google.maps.Map(mapDiv, {
+    center: { lat: schools[0].lat, lng: schools[0].lng },
+    zoom: 11
   });
 
-  // Feature 3: clear button removes the dropped markers
-  const clearBtn = document.getElementById("clearMarkersBtn");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", function () {
-      markers.forEach(function (m) { m.setMap(null); });
-      markers.length = 0;
+  schools.forEach(function (school) {
+    const marker = new google.maps.Marker({
+      position: { lat: school.lat, lng: school.lng },
+      map: map,
+      title: school.name
     });
-  }
+    const info = new google.maps.InfoWindow({ content: "<strong>" + school.name + "</strong>" });
+    marker.addListener("click", function () { info.open(map, marker); });
+  });
 }
 window.initMap = initMap;
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("questionsBtn");
-  if (btn) {
-    btn.addEventListener("click", function () {
-      alert("If you have questions, contact me at:\njohnkruder@gmail.com");
-    });
-  }
-});
