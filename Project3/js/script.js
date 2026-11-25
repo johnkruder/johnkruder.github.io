@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("questionsBtn");
   if (btn) {
     btn.addEventListener("click", function () {
-      alert("If you have questions, contact me at:\njohnkruder@gmail.com");
+      alert("If you have questions, contact me at: jkruder@hawk.illinoistech.edu");
     });
   }
 });
