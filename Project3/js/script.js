@@ -1,43 +1,68 @@
-function initMap() {
-  const mapDiv = document.getElementById("map");
-  if (!mapDiv) { return; }
+"use strict";
 
-  const schools = [
+var myMap;
+
+document.addEventListener("DOMContentLoaded", function () {
+  setupQuestionsButton();
+  loadGoogleMaps();
+});
+
+
+function setupQuestionsButton() {
+  var btn = document.getElementById("questionsBtn");
+  if (!btn) {
+    return;
+  }
+  btn.addEventListener("click", function () {
+    alert("If you have questions, contact me at:\njkruder@hawk.illinoistech.edu");
+  });
+}
+
+function loadGoogleMaps() {
+  if (!document.getElementById("map")) {
+    return;
+  }
+  var script = document.createElement("script");
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1F-BpX660SBK3-Vw9O9f7AEvTAIH8rI&callback=initMap";
+  script.async = true;
+  script.onerror = function () {
+    console.error("Google Maps API could not load.");
+  };
+  document.head.appendChild(script);
+}
+
+function initMap() {
+  var schools = [
     { name: "Illinois Institute of Technology", lat: 41.8348, lng: -87.6270 },
     { name: "Brother Rice High School", lat: 41.7115, lng: -87.7186 },
     { name: "Mt. Greenwood Elementary", lat: 41.6961, lng: -87.7053 }
   ];
 
-  const map = new google.maps.Map(mapDiv, {
+  myMap = new google.maps.Map(document.getElementById("map"), {
     center: { lat: schools[0].lat, lng: schools[0].lng },
-    zoom: 11
+    zoom: 11,
+    mapTypeId: "roadmap"
   });
+
+  var infoWindow = new google.maps.InfoWindow();
+  var bounds = new google.maps.LatLngBounds();
 
   schools.forEach(function (school) {
-    const marker = new google.maps.Marker({
-      position: { lat: school.lat, lng: school.lng },
-      map: map,
+    var position = { lat: school.lat, lng: school.lng };
+    var marker = new google.maps.Marker({
+      position: position,
+      map: myMap,
       title: school.name
     });
-    const info = new google.maps.InfoWindow({ content: "<strong>" + school.name + "</strong>" });
-    marker.addListener("click", function () { info.open(map, marker); });
+    bounds.extend(position);
+
+    marker.addListener("click", function () {
+      infoWindow.setContent("<strong>" + school.name + "</strong>");
+      infoWindow.open(myMap, marker);
+    });
   });
 
-    const bounds = new google.maps.LatLngBounds();
-    schools.forEach(function (school) {
-    bounds.extend({ lat: school.lat, lng: school.lng });
-    });
-    map.fitBounds(bounds);
-
+  myMap.fitBounds(bounds);
 }
 
 window.initMap = initMap;
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("questionsBtn");
-  if (btn) {
-    btn.addEventListener("click", function () {
-      alert("If you have questions, contact me at:\njkruder@hawk.illinoistech.edu");
-    });
-  }
-});
