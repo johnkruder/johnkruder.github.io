@@ -22,5 +22,22 @@ function initMap() {
     const info = new google.maps.InfoWindow({ content: "<strong>" + school.name + "</strong>" });
     marker.addListener("click", function () { info.open(map, marker); });
   });
+
+    const bounds = new google.maps.LatLngBounds();
+    schools.forEach(function (school) {
+    bounds.extend({ lat: school.lat, lng: school.lng });
+    });
+    map.fitBounds(bounds);
+
 }
+
 window.initMap = initMap;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("questionsBtn");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      alert("If you have questions, contact me at:\njohnkruder@gmail.com");
+    });
+  }
+});
